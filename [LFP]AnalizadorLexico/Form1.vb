@@ -3,7 +3,7 @@
 Public Class Form1
     ' Se carga un texto de ejemplo para ser analizado
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        txtEntrada.Text = "si x > 5:" & vbCrLf & "para i in rango(10):" & vbCrLf & "print(i)" & vbCrLf & "sino:" & vbCrLf & "mientras y < 100:" & vbCrLf & "y += 10"
+        txtEntrada.Text = "[(8-9)*8]+ (6-4) / 9 * 1 -3"
     End Sub
 
     ' Cuando se presiona el botón, se realiza el análisis léxico

@@ -56,7 +56,7 @@
             Case Tipo.IDENTIFICADOR
                 Return "Identificador"
             Case Else
-                Return "Desconocido   "
+                Return "Desconocido"
         End Select
     End Function
 End Class

@@ -7,11 +7,13 @@
         SIGNO_MEN
         SIGNO_POR
         SIGNO_DIV
-        SIGNO_POW
         PARENTESIS_IZQ
         PARENTESIS_DER
         PALABRA_RESERVADA
         IDENTIFICADOR
+        CORCHETE_IZQ
+        CORCHETE_DER
+        NO_VALIDO ' Nuevo tipo para caracteres no válidos
     End Enum
 
     ' Atributo que almacena el tipo de token
@@ -45,18 +47,22 @@
                 Return "Signo Por     "
             Case Tipo.SIGNO_DIV
                 Return "Signo División"
-            Case Tipo.SIGNO_POW
-                Return "Signo Potencia"
             Case Tipo.PARENTESIS_IZQ
                 Return "Parentesis Izq"
             Case Tipo.PARENTESIS_DER
                 Return "Parentesis Der"
+            Case Tipo.CORCHETE_IZQ
+                Return "Corchete Izq  "
+            Case Tipo.CORCHETE_DER
+                Return "Corchete Der  "
             Case Tipo.PALABRA_RESERVADA
                 Return "Palabra Reservada"
             Case Tipo.IDENTIFICADOR
                 Return "Identificador"
+            Case Tipo.NO_VALIDO ' Nuevo caso para caracteres no válidos
+                Return "Caracter no válido"
             Case Else
-                Return "Desconocido"
+                Return "Desconocido   "
         End Select
     End Function
 End Class

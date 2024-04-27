@@ -1,53 +1,64 @@
-﻿Public Class Token
-    ' Tipos de tokens reconocidos por el analizador
-    Enum Tipo
-        SONIDO_DO
-        SONIDO_RE
-        SONIDO_MI
-        SONIDO_FA
-        SONIDO_SOL
-        SONIDO_LA
-        SONIDO_SI
-        NO_VALIDO ' Nuevo tipo para caracteres no válidos
-    End Enum
+﻿Namespace Analisis
+    Public Class Token
+        ' Definición de tipos de tokens
+        Enum Tipo
+            PALABRA_CLAVE
+            IDENTIFICADOR
+            LITERAL
+            OPERADOR
+            SIMBOLO_ESPECIAL
+            NO_VALIDO
+            LIBRERIA ' Nuevo tipo de token para manejar #include y similares
+        End Enum
 
-    ' Atributo que almacena el tipo de token
-    Private tipoToken As Tipo
-    ' Atributo que almacena el valor específico que fue reconocido, el lexema
-    Private valor As String
+        ' Propiedades de la clase Token
+        Public Property TipoToken As Tipo
+        Public Property Valor As String
 
-    ' Constructor de la clase
-    Public Sub New(ByVal tipo As Tipo, ByVal auxLex As String)
-        Me.tipoToken = tipo
-        Me.valor = auxLex
-    End Sub
+        ' Constructor de la clase
+        Public Sub New(ByVal tipo As Tipo, ByVal valor As String)
+            Try
+                Me.TipoToken = tipo
+                Me.Valor = valor
+            Catch ex As Exception
+                Console.WriteLine($"Error al crear el token: {ex.Message}")
+            End Try
+        End Sub
 
-    ' Función que devuelve el valor almacenado, es decir, el lexema
-    Public Function getValor() As String
-        Return valor
-    End Function
+        ' Métodos de acceso a propiedades
+        Public Function ObtenerTipo() As Tipo
+            Return TipoToken
+        End Function
 
-    ' Función utilizada para devolver en cadena el tipo específico del token
-    Public Function getTipoEnString() As String
-        Select Case tipoToken
-            Case Tipo.SONIDO_DO
-                Return "Sonido DO"
-            Case Tipo.SONIDO_RE
-                Return "Sonido RE"
-            Case Tipo.SONIDO_MI
-                Return "Sonido MI"
-            Case Tipo.SONIDO_FA
-                Return "Sonido FA"
-            Case Tipo.SONIDO_SOL
-                Return "Sonido SOL"
-            Case Tipo.SONIDO_LA
-                Return "Sonido LA"
-            Case Tipo.SONIDO_SI
-                Return "Sonido SI"
-            Case Tipo.NO_VALIDO ' Nuevo caso para caracteres no válidos
-                Return "Caracter no válido"
-            Case Else
-                Return "Desconocido"
-        End Select
-    End Function
-End Class
+        Public Function ObtenerValor() As String
+            Return Valor
+        End Function
+
+        ' Método para obtener la representación en cadena del tipo de token
+        Public Function ObtenerTipoComoCadena() As String
+            Try
+                Select Case TipoToken
+                    Case Tipo.PALABRA_CLAVE
+                        Return "Palabra clave"
+                    Case Tipo.IDENTIFICADOR
+                        Return "Identificador"
+                    Case Tipo.LITERAL
+                        Return "Literal"
+                    Case Tipo.OPERADOR
+                        Return "Operador"
+                    Case Tipo.SIMBOLO_ESPECIAL
+                        Return "Símbolo especial"
+                    Case Tipo.NO_VALIDO
+                        Return "Caracter no válido"
+                    Case Tipo.LIBRERIA
+                        Return "Librería" ' Nueva entrada para manejar el tipo LIBRERIA
+                    Case Else
+                        Return "Desconocido"
+                End Select
+            Catch ex As Exception
+                Console.WriteLine($"Error al obtener la cadena del tipo de token: {ex.Message}")
+                Return "Error"
+            End Try
+        End Function
+    End Class
+End Namespace

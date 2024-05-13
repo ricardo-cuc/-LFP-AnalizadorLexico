@@ -27,12 +27,70 @@ Public Class Form1
 
         ' Limpia los cuadros de texto de salida antes de agregar los nuevos tokens
         txtSalida.Clear()
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        txtSintaxis.Clear()
+>>>>>>> 7db3361e926fdac4b153158bb0f4236f3dd5c24d
+=======
+        txtSintaxis.Clear()
+>>>>>>> 7db3361e926fdac4b153158bb0f4236f3dd5c24d
+=======
+        txtSintaxis.Clear()
+>>>>>>> 7db3361e926fdac4b153158bb0f4236f3dd5c24d
 
         ' Recorre la lista de tokens y los muestra en el cuadro de texto de salida
         For Each token As Token In listaTokens
             txtSalida.AppendText($"{token.ObtenerTipoComoCadena()}  <-->  {token.Valor}{vbCrLf}")
         Next
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
         ' Realiza el análisis sintáctico
+=======
+=======
+>>>>>>> 7db3361e926fdac4b153158bb0f4236f3dd5c24d
+=======
+>>>>>>> 7db3361e926fdac4b153158bb0f4236f3dd5c24d
+        ' Inicializa el analizador sintáctico con la lista de tokens
+        Dim analizadorSintactico As New AnalizadorSintactico(listaTokens)
+
+        ' Realiza el análisis sintáctico
+        Dim esSintaxisCorrecta As Boolean
+        Try
+            esSintaxisCorrecta = analizadorSintactico.Analizar()
+            If esSintaxisCorrecta Then
+                txtSintaxis.AppendText("El programa es sintácticamente correcto." & vbCrLf)
+            Else
+                txtSintaxis.AppendText("El programa tiene errores de sintaxis." & vbCrLf)
+                ' Mostrar detalles de los errores
+                Dim list = DirectCast(analizadorSintactico.ObtenerErroresSintacticos(), IList)
+
+                For i = 0 To list.Count - 1
+                    Dim errorSintactico As ErrorSintactico = DirectCast(list(i), ErrorSintactico)
+                    txtSintaxis.AppendText($"{errorSintactico}{vbCrLf}")
+                Next
+            End If
+        Catch ex As Exception
+            ' Manejar cualquier excepción inesperada
+            txtSintaxis.AppendText("Error de análisis sintáctico: " & ex.Message & vbCrLf)
+        End Try
+    End Sub
+
+    Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
+
+    End Sub
+
+    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles txtSintaxis.TextChanged
+
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 7db3361e926fdac4b153158bb0f4236f3dd5c24d
+=======
+>>>>>>> 7db3361e926fdac4b153158bb0f4236f3dd5c24d
+=======
+>>>>>>> 7db3361e926fdac4b153158bb0f4236f3dd5c24d
     End Sub
 End Class

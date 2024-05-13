@@ -27,6 +27,8 @@ Partial Class Form1
         Me.txtSalida = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.txtSintaxis = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'txtEntrada
@@ -41,7 +43,7 @@ Partial Class Form1
         'Button1
         '
         Me.Button1.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(15, 253)
+        Me.Button1.Location = New System.Drawing.Point(12, 510)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(608, 27)
         Me.Button1.TabIndex = 1
@@ -76,11 +78,32 @@ Partial Class Form1
         Me.Label2.TabIndex = 4
         Me.Label2.Text = "Salida (Lista de Tokens):"
         '
+        'txtSintaxis
+        '
+        Me.txtSintaxis.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSintaxis.Location = New System.Drawing.Point(12, 276)
+        Me.txtSintaxis.Multiline = True
+        Me.txtSintaxis.Name = "txtSintaxis"
+        Me.txtSintaxis.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.txtSintaxis.Size = New System.Drawing.Size(301, 213)
+        Me.txtSintaxis.TabIndex = 5
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(15, 256)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(224, 15)
+        Me.Label3.TabIndex = 6
+        Me.Label3.Text = "Salida (Analizador Sintactico):"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(630, 293)
+        Me.ClientSize = New System.Drawing.Size(644, 566)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.txtSintaxis)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtSalida)
@@ -98,5 +121,6 @@ Partial Class Form1
     Friend WithEvents txtSalida As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
-
+    Friend WithEvents txtSintaxis As TextBox
+    Friend WithEvents Label3 As Label
 End Class

@@ -3,6 +3,10 @@ Imports _LFP_AnalizadorLexico.Analisis
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+Imports Analisis
+>>>>>>> 7db3361e926fdac4b153158bb0f4236f3dd5c24d
 =======
 Imports Analisis
 >>>>>>> 7db3361e926fdac4b153158bb0f4236f3dd5c24d
@@ -112,6 +116,7 @@ Public Class AnalizadorLexico
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         ElseIf lexema.StartsWith("using") Then
             salida.Add(New Token(Token.Tipo.PALABRA_CLAVE, lexema))
         ElseIf lexema.StartsWith("#include") Then
@@ -200,6 +205,23 @@ Public Class AnalizadorLexico
             Next
 
 >>>>>>> 7db3361e926fdac4b153158bb0f4236f3dd5c24d
+=======
+        ElseIf Char.IsLetterOrDigit(lexema(0)) Then
+            ' Verifica si hay palabras clave antes del lexema actual, lo que podría indicar la declaración de una variable
+            Dim esVariable As Boolean = False
+
+            ' Verifica si el lexema es precedido por una palabra clave
+            For i As Integer = salida.Count - 1 To 0 Step -1
+                If salida(i).TipoToken = Token.Tipo.PALABRA_CLAVE Then
+                    esVariable = True
+                    Exit For
+                ElseIf salida(i).TipoToken <> Token.Tipo.IDENTIFICADOR Then
+                    esVariable = False
+                    Exit For
+                End If
+            Next
+
+>>>>>>> 7db3361e926fdac4b153158bb0f4236f3dd5c24d
             ' Agrega el lexema como una variable o identificador según el resultado anterior
             If esVariable Then
                 salida.Add(New Token(Token.Tipo.VARIABLE, lexema))
@@ -212,6 +234,9 @@ Public Class AnalizadorLexico
     End Sub
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 7db3361e926fdac4b153158bb0f4236f3dd5c24d
+=======
 >>>>>>> 7db3361e926fdac4b153158bb0f4236f3dd5c24d
 =======
 >>>>>>> 7db3361e926fdac4b153158bb0f4236f3dd5c24d

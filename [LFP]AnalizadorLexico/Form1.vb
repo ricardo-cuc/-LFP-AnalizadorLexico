@@ -30,6 +30,10 @@ Public Class Form1
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        txtSintaxis.Clear()
+>>>>>>> 7db3361e926fdac4b153158bb0f4236f3dd5c24d
 =======
         txtSintaxis.Clear()
 >>>>>>> 7db3361e926fdac4b153158bb0f4236f3dd5c24d
@@ -48,8 +52,11 @@ Public Class Form1
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         ' Realiza el análisis sintáctico
 =======
+=======
+>>>>>>> 7db3361e926fdac4b153158bb0f4236f3dd5c24d
 =======
 >>>>>>> 7db3361e926fdac4b153158bb0f4236f3dd5c24d
 =======
@@ -87,6 +94,9 @@ Public Class Form1
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 7db3361e926fdac4b153158bb0f4236f3dd5c24d
+=======
 >>>>>>> 7db3361e926fdac4b153158bb0f4236f3dd5c24d
 =======
 >>>>>>> 7db3361e926fdac4b153158bb0f4236f3dd5c24d

@@ -1,31 +1,38 @@
 ﻿Imports System.Collections.Generic
-Imports System.Windows.Forms ' Agrega esta importación para usar Windows Forms
+Imports System.Windows.Forms
+Imports _LFP_AnalizadorLexico.Analisis
 
 Public Class Form1
-    ' Se carga un texto de ejemplo para ser analizado
+    ' Evento que se ejecuta cuando se carga el formulario
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        txtEntrada.Text = "[(8-9)*8]+ (6-4) / 9 * 1 -3" ' Texto de ejemplo
+        ' Configura un ejemplo de código C++ para el análisis
+        txtEntrada.Text = "#include <iostream>" & vbCrLf &
+                          "using namespace std;" & vbCrLf &
+                          "int main()" & vbCrLf &
+                          "{" & vbCrLf &
+                          "    cout << ""Hola, mundo!"" << endl;" & vbCrLf &
+                          "    return 0;" & vbCrLf &
+                          "}"
     End Sub
 
-    ' Cuando se presiona el botón, se realiza el análisis léxico
+    ' Evento que se ejecuta cuando se presiona el botón para realizar el análisis léxico y sintáctico
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        ' Obtiene la entrada del usuario (código C++)
         Dim entrada As String = txtEntrada.Text
-        ' Proceso de análisis léxico
-        Dim analizador As New AnalizadorLexico()
-        Dim listaTokens As List(Of Token) = analizador.Escanear(entrada)
 
-        ' Limpiar el cuadro de texto de salida antes de agregar los nuevos tokens
-        txtSalida.Text = ""
+        ' Inicializa el analizador léxico
+        Dim analizadorLexico As New AnalizadorLexico()
+        ' Realiza el análisis léxico de la entrada
+        Dim listaTokens As List(Of Token) = analizadorLexico.Escanear(entrada)
 
-        ' Agregar cada token al cuadro de texto de salida
+        ' Limpia los cuadros de texto de salida antes de agregar los nuevos tokens
+        txtSalida.Clear()
+
+        ' Recorre la lista de tokens y los muestra en el cuadro de texto de salida
         For Each token As Token In listaTokens
-            txtSalida.AppendText(token.getTipoEnString() & "  <-->  " & token.getValor() & vbCrLf)
+            txtSalida.AppendText($"{token.ObtenerTipoComoCadena()}  <-->  {token.Valor}{vbCrLf}")
         Next
 
-        ' Mostrar caracteres no válidos
-        Dim caracteresNoValidos As List(Of Char) = analizador.ObtenerCaracteresNoValidos(entrada)
-        For Each caracter As Char In caracteresNoValidos
-            txtSalida.AppendText(Token.Tipo.NO_VALIDO.ToString() & "  <-->  " & caracter & vbCrLf)
-        Next
+        ' Realiza el análisis sintáctico
     End Sub
 End Class

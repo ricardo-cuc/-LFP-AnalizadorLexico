@@ -1,5 +1,4 @@
 ﻿Imports System.Collections.Generic
-Imports _LFP_AnalizadorLexico.Analisis.Token
 
 Namespace Analisis
     ' Clase para representar un error sintáctico
@@ -17,11 +16,11 @@ Namespace Analisis
 
         ' Método para obtener la representación en cadena del error
         Public Overrides Function ToString() As String
-            Return $"Error en la línea {Linea}, columna {Columna}: {Mensaje}"
+            Return $"Error en línea {Linea}, columna {Columna}: {Mensaje}"
         End Function
     End Class
 
-    ' Clase AnalizadorSintactico para realizar el análisis sintáctico de una lista de tokens
+    ' Clase para realizar el análisis sintáctico de una lista de tokens
     Public Class AnalizadorSintactico
         Private ReadOnly tokens As List(Of Token)
         Private indiceActual As Integer
@@ -39,45 +38,35 @@ Namespace Analisis
             ' Inicializa la lista de errores sintácticos
             erroresSintacticos.Clear()
 
-            ' Iniciar el análisis sintáctico desde el token actual
+            ' Inicia el análisis sintáctico
             While indiceActual < tokens.Count
                 Try
+                    ' Lógica para analizar las declaraciones
                     AnalizarDeclaracion()
                 Catch ex As Exception
-                    ' Captura cualquier excepción durante el análisis y agrega un error sintáctico
+                    ' Captura cualquier excepción y registra un error sintáctico
                     Dim tokenActual As Token = tokens(indiceActual)
                     erroresSintacticos.Add(New ErrorSintactico(ex.Message, tokenActual.Linea, tokenActual.Columna))
-                    ' Avanza al siguiente token para continuar el análisis
+                    ' Avanza al siguiente token
                     indiceActual += 1
                 End Try
             End While
 
-            ' Retorna true si no se encontraron errores, false de lo contrario
+            ' Retorna true si no se encontraron errores, false si hubo errores
             Return erroresSintacticos.Count = 0
         End Function
 
-        ' Método para analizar una declaración específica
+        ' Método para analizar una declaración
         Private Sub AnalizarDeclaracion()
-            ' Lógica para analizar diferentes tipos de declaraciones
-            ' Ejemplo: análisis de declaraciones de variables
-            If tokens(indiceActual).TipoToken = Tipo.PALABRA_CLAVE Then
-                ' Lógica para manejar declaraciones
-                ' Ejemplo: verificar la declaración de variables, funciones, etc.
-                ' Puedes añadir la lógica para manejar declaraciones específicas aquí.
+            ' Lógica para analizar declaraciones
+            ' Por ejemplo, análisis de funciones, variables, etc.
+            ' Puedes añadir lógica aquí para manejar casos específicos.
 
-                ' Avanzar al siguiente token
-                indiceActual += 1
-            Else
-                ' Agregar un error sintáctico si se encuentra un token inesperado
-                Dim tokenActual As Token = tokens(indiceActual)
-                erroresSintacticos.Add(New ErrorSintactico($"Token inesperado: {tokenActual.Valor}", tokenActual.Linea, tokenActual.Columna))
-
-                ' Avanzar al siguiente token
-                indiceActual += 1
-            End If
+            ' Avanza al siguiente token después de analizar la declaración
+            indiceActual += 1
         End Sub
 
-        ' Método para obtener la lista de errores sintácticos encontrados durante el análisis
+        ' Método para obtener la lista de errores sintácticos
         Public Function ObtenerErroresSintacticos() As List(Of ErrorSintactico)
             Return erroresSintacticos
         End Function

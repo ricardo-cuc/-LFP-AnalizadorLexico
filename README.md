@@ -1,10 +1,8 @@
 Información general:
-* Creado por: Erick Navarro
-* Blog: e-navarro.blogspot.com
-* Medium: https://medium.com/@ericknavarro
-* Octubre - 2015
+* Creado por: Ricardo Cuc
+* Marzo 2024
 
 Herramientas utilizadas:
 * Visual Basic		  (Lenguaje de programación)
-* Visual Studio 2013  (IDE)
-* Windows 7           (Sistema operativo)
+* Visual Studio 2022  (IDE)
+* Windows 11           (Sistema operativo)
